@@ -12,8 +12,7 @@
     <script src="../js/angular.min.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="PraticaSUE">
-
+<body ng-controller="Dati">
 
 </body>
 </html>

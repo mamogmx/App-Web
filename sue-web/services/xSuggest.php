@@ -6,14 +6,3 @@
  * and open the template in the editor.
  */
 
-?>
-<html ng-app="SUE-App">
-<head>
-    <script src="../js/angular.min.js"></script>
-  <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="PraticaSUE">
-
-
-</body>
-</html>
