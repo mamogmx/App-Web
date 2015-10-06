@@ -7,7 +7,7 @@
  */
 $result=Array(
     "success"=>0,
-    "data"=>"",
+    "page"=>"",
     "message"=>Array()
 );
 $action=$_POST["action"];

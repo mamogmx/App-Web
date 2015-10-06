@@ -20,8 +20,15 @@
             vmenu: []
         }, options );
         
-        this.pratica = self.settings.pratica,
+        this.pratica = self.settings.data.pratica || -1,
         this.app = self.settings.app,
+        
+        this.getData = function(){
+          return self.settings.data || {};  
+        },
+        this.setData = function(d){
+            $.extend(d,self.settings.data);
+        },
         this.loadVMenu = function(menu){
             var html = "";
             $.each(self.settings.dataTemplate.vMenu[menu],function(k,v){
@@ -33,7 +40,6 @@
             $('a[data-plugin="loadPage"]').bind("click",function(e){
                 e.preventDefault();
                 var d = $(this).data();
-                console.log(d);
                 self.loadPage(d.page);
             });
         };

@@ -21,6 +21,12 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/angular.min.js"></script>
     <script src="../js/sprintf.js"></script>
+    
+    <script>
+        /*Retrive data from pg query*/
+        var appData = {id:0,pratica:0,avvioproc:{},soggetti:[]};
+    </script>
+    
     <script src="js/template.js"></script>
     <script src="js/app.plugins.js"></script>
     <script src="controller/sue.controller.js"></script>
@@ -28,7 +34,6 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="css/sue.css">
-
 </head>
 <body>
     <div id="header">
