@@ -23,7 +23,7 @@
     <script src="../js/sprintf.js"></script>
     <script src="js/template.js"></script>
     <script src="js/app.plugins.js"></script>
-    <script src="js/sue.controller.js"></script>
+    <script src="controller/sue.controller.js"></script>
     <link rel="stylesheet" href="../css/themes-ui/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -49,28 +49,7 @@
             </a>
         </div>
         <nav class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" data-plugin="loadVMenu" data-menu="generale" >Dati Generali</a>
-                </li>
-                <li>
-                    <a href="#" data-plugin="loadVMenu" data-menu="it">Istruttori Tecnica</a>
-                </li>
-                <li>
-                    <a href="#"  data-plugin="loadVMenu" data-menu="ia">Istruttoria Amministrativa</a>
-                </li>
-                <li>
-                    <a href="#"  data-plugin="loadVMenu" data-menu="titolo">Titolo</a>
-                </li>
-                <li>
-                    <a href="#" data-plugin="loadVMenu" data-menu="lavori">Lavori</a>
-                </li>
-                <li>
-                    <a href="#"  data-plugin="loadVMenu" data-menu="pagamenti">Pagamenti</a>
-                </li>
-                <li>
-                    <a href="#" data-plugin="loadVMenu" data-menu="iter">Iter</a>
-                </li>
+            <ul class="nav navbar-nav" id="top-navbar"></ul>
         </nav>
     </div>
     <div id="wrapper">

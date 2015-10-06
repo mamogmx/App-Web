@@ -5,4 +5,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$result=Array(
+    "success"=>0,
+    "data"=>"",
+    "message"=>Array()
+);
+$action=$_POST["action"];
 
+switch($action){
+    case "loadPage":
+        break;
+    default :
+        break;
+}
+header('Content-Type: application/json');
+print json_encode($result);
+?>

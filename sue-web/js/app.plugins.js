@@ -12,37 +12,64 @@
         this.settings = $.extend({
             // These are the defaults.
             // default options goes here
+            serverURL: 'services/xServer.php',
+            searchURL: 'services/xSearch.php',
             app: 'sue',
             pratica: 0,
             hmenu: [],
             vmenu: []
         }, options );
         
-        this.init = function (){
-            $.each(self.dataMenu,function(k,v){
-                
+        this.pratica = self.settings.pratica,
+        this.app = self.settings.app,
+        this.loadVMenu = function(menu){
+            var html = "";
+            $.each(self.settings.dataTemplate.vMenu[menu],function(k,v){
+                var tmp = $.extend({class: '',group: menu},v);
+                html+=sprintf(self.settings.template.vMenu,tmp);
+
             });
+            $("#v-menu").html(html);
+            $('a[data-plugin="loadPage"]').bind("click",function(e){
+                e.preventDefault();
+                var d = $(this).data();
+                console.log(d);
+                self.loadPage(d.page);
+            });
+        };
+        this.loadHToolbar = function(){
+            var html = "";
+            $.each(self.settings.dataTemplate.hMenu,function(k,v){
+                html+=sprintf(self.settings.template.hMenu,v);
+            });
+            $("#top-navbar").html(html);
+        };
+        this.loadPage = function(page){
+            var dataPost = {
+                action: 'loadPage',
+                pratica: self.pratica,
+                app: self.app
+            };
+            $.ajax({
+                url: self.settings.serverURL,
+                data: dataPost,
+                method: 'POST'
+            });
+        },
+        this.search = function(){
+            
+        };
+        this.save = function(){
+            
+        };
+        this.init = function (){
+            self.loadHToolbar();
+            
             $('a[data-plugin="loadVMenu"]').bind("click",function(e){
                 e.preventDefault();
                 var d = $(this).data();
                 self.loadVMenu(d.menu);
             });
-            $('a[data-plugin="loadPage"]').bind("click",function(e){
-                e.preventDefault();
-                var d = $(this).data();
-                self.loadPage(d.menu);
-            });
-        };
-        this.loadVMenu = function(menu){
-            alert(menu);
-        };
-        this.loadHToolbar = function(){
-            
-        };
-        this.search = function(){
-            
-        };
-        this.save = function(){
             
         };
         /*if (!this.settings.pratica){
