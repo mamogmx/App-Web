@@ -43,6 +43,11 @@
                 html+=sprintf(self.settings.template.hMenu,v);
             });
             $("#top-navbar").html(html);
+            $('a[data-plugin="loadVMenu"]').bind("click",function(e){
+                e.preventDefault();
+                var d = $(this).data();
+                self.loadVMenu(d.menu);
+            });
         };
         this.loadPage = function(page){
             var dataPost = {
@@ -64,13 +69,6 @@
         };
         this.init = function (){
             self.loadHToolbar();
-            
-            $('a[data-plugin="loadVMenu"]').bind("click",function(e){
-                e.preventDefault();
-                var d = $(this).data();
-                self.loadVMenu(d.menu);
-            });
-            
         };
         /*if (!this.settings.pratica){
             $("#myModalBody").html("");
