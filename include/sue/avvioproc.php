@@ -7,7 +7,7 @@
  */
 
 $html=<<<EOT
-<form>
+<div ng-controller="avvioproc">
 <div class="container-fluid">
     <div class="row form-group">
         <div class="col-md-6">
@@ -30,6 +30,6 @@ $html=<<<EOT
         </div>
     </div>
 </div>
-</form>
+</div>
 EOT;
 ?>

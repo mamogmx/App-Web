@@ -71,6 +71,7 @@
                     console.log(data.success);
                     if(data.success==1){
                         $("#main").html(data.page);
+                        angular.bootstrap(document, ['sueApp']);
                     }
                 }
             });

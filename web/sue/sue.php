@@ -24,7 +24,13 @@
     
     <script>
         /*Retrive data from pg query*/
-        var appData = {id:0,pratica:0,avvioproc:{},soggetti:[]};
+        var avvio = {
+            numero: '10234/15',
+            protocollo: '0010234',
+            data_presentazione: '03/12/2014',
+            data_protocollo: '04/12/2014'
+        };
+        var appData = {id:0,pratica:0,avvioproc:avvio,soggetti:[]};
     </script>
     
     <script src="js/template.js"></script>
