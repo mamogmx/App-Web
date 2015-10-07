@@ -59,12 +59,20 @@
             var dataPost = {
                 action: 'loadPage',
                 pratica: self.pratica,
-                app: self.app
+                app: self.app,
+                page: page
             };
             $.ajax({
                 url: self.settings.serverURL,
                 data: dataPost,
-                method: 'POST'
+                method: 'POST',
+                dataType: 'JSON',
+                success:function(data,textStatus,jqXHR){
+                    console.log(data.success);
+                    if(data.success==1){
+                        $("#main").html(data.page);
+                    }
+                }
             });
         },
         this.search = function(){
