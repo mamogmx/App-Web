@@ -1,5 +1,36 @@
 <?php
-
+require_once 'config.php';
+$pratica=6902;
+$db = utils::getDb();
+$sql="SELECT id,pratica,data AS avvioproc FROM sue.avvioproc WHERE pratica=?;";
+$stmt = $db->prepare($sql);
+if($stmt->execute(Array($pratica))){
+    $res=$stmt->fetch(PDO::FETCH_ASSOC);
+    $result["id"]=$res["id"];
+    $result["pratica"]=$res["pratica"];
+    $result["avvioproc"] =  json_decode($res["avvioproc"],TRUE);
+    $sql="SELECT data FROM sue.soggetti WHERE pratica=?";
+    $stmt = $db->prepare($sql);
+    if($stmt->execute(Array($pratica))){
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        for($i=0;$i<count($res);$i++){
+            $data=json_decode($res[$i]["data"],TRUE);
+            $result["soggetti"][$data["id"]]=$data;
+        }
+    }
+    $sql="SELECT data FROM sue.indirizzi WHERE pratica=?";
+    $stmt = $db->prepare($sql);
+    if($stmt->execute(Array($pratica))){
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        for($i=0;$i<count($res);$i++){
+            $data=json_decode($res[$i]["data"],TRUE);
+            $result["indirizzi"][$data["id"]]=$data;
+        }
+    }
+}
+ else {
+    
+echo $sql;}
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,13 +55,9 @@
     
     <script>
         /*Retrive data from pg query*/
-        var avvio = {
-            numero: '10234/15',
-            protocollo: '0010234',
-            data_presentazione: '03/12/2014',
-            data_protocollo: '04/12/2014'
-        };
-        var appData = {id:0,pratica:0,avvioproc:avvio,soggetti:[]};
+        
+        var appData = <?php print json_encode($result);?>;
+        console.log(appData);
     </script>
     
     <script src="js/template.js"></script>
@@ -41,7 +68,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="css/sue.css">
 </head>
-<body>
+<body ng-app="sueApp">
     <div id="header">
         <span id="logo"></span>
         <span style="float:right;text-align:right;padding-right:50px;">
